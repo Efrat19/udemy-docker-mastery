@@ -27,9 +27,8 @@ WORKDIR /usr/src/app
 # - Node uses a "package manager", so it needs to copy in package.json file
 COPY package.json package.json
 # - then it needs to run 'npm install' to install dependencies from that file
-RUN npm i
 # - to keep it clean and small, run 'npm cache clean --force' after above
-RUN npm cache clean --force
+RUN npm i &&npm cache clean --force
 # - then it needs to copy in all files from current directory
 COPY . /usr/src/app
 # - then it needs to start container with command '/sbin/tini -- node ./bin/www'
